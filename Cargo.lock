@@ -1034,7 +1034,7 @@ dependencies = [
 [[package]]
 name = "craft-atomic"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "rustix 1.1.5",
 ]
@@ -1042,7 +1042,7 @@ dependencies = [
 [[package]]
 name = "craft-behavior"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "accesskit",
  "bitflags 2.13.2",
@@ -1060,12 +1060,12 @@ dependencies = [
 [[package]]
 name = "craft-cfb"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 
 [[package]]
 name = "craft-cloud-ui"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "egui",
 ]
@@ -1073,12 +1073,12 @@ dependencies = [
 [[package]]
 name = "craft-codepage"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 
 [[package]]
 name = "craft-csv"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "thiserror 2.0.21",
 ]
@@ -1086,7 +1086,7 @@ dependencies = [
 [[package]]
 name = "craft-docpath"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "serde",
 ]
@@ -1094,7 +1094,7 @@ dependencies = [
 [[package]]
 name = "craft-drawingml"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "chrono",
  "craft-xml",
@@ -1106,7 +1106,7 @@ dependencies = [
 [[package]]
 name = "craft-font-catalog"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "harfrust 0.13.3",
  "kurbo",
@@ -1120,12 +1120,12 @@ dependencies = [
 [[package]]
 name = "craft-fonts-build"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 
 [[package]]
 name = "craft-gridcraft-format"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "serde",
  "serde_json",
@@ -1135,7 +1135,7 @@ dependencies = [
 [[package]]
 name = "craft-host"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "bitflags 2.13.2",
  "craft-i18n",
@@ -1148,7 +1148,7 @@ dependencies = [
 [[package]]
 name = "craft-i18n"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "chrono",
  "fixed_decimal",
@@ -1176,7 +1176,7 @@ dependencies = [
 [[package]]
 name = "craft-keymap"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-host",
  "craft-i18n",
@@ -1191,7 +1191,7 @@ dependencies = [
 [[package]]
 name = "craft-math"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-xml",
  "roxmltree",
@@ -1201,7 +1201,7 @@ dependencies = [
 [[package]]
 name = "craft-mcp-server"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "serde_json",
 ]
@@ -1209,7 +1209,7 @@ dependencies = [
 [[package]]
 name = "craft-odf"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "aes",
  "base64 0.23.1",
@@ -1227,7 +1227,7 @@ dependencies = [
 [[package]]
 name = "craft-ods"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-odf",
  "craft-sheet",
@@ -1238,7 +1238,7 @@ dependencies = [
 [[package]]
 name = "craft-offcrypto"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "aes",
  "base64 0.23.1",
@@ -1255,7 +1255,7 @@ dependencies = [
 [[package]]
 name = "craft-opc"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-xml",
  "craft-zip",
@@ -1266,7 +1266,7 @@ dependencies = [
 [[package]]
 name = "craft-pdf"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "serde",
 ]
@@ -1274,7 +1274,7 @@ dependencies = [
 [[package]]
 name = "craft-platform"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "async-channel",
  "async-io",
@@ -1304,7 +1304,7 @@ dependencies = [
 [[package]]
 name = "craft-print"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-host",
  "craft-winprint-gdi",
@@ -1324,7 +1324,7 @@ dependencies = [
 [[package]]
 name = "craft-quit"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "dispatch2",
  "objc2 0.6.5",
@@ -1334,7 +1334,7 @@ dependencies = [
 [[package]]
 name = "craft-settings"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-atomic",
  "craft-host",
@@ -1351,12 +1351,12 @@ dependencies = [
 [[package]]
 name = "craft-sheet"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 
 [[package]]
 name = "craft-stream-codecs"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "fax",
  "hayro-ccitt",
@@ -1367,7 +1367,7 @@ dependencies = [
 [[package]]
 name = "craft-svg"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-xml",
  "flate2",
@@ -1384,7 +1384,7 @@ dependencies = [
 [[package]]
 name = "craft-theme"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "bitflags 2.13.2",
  "craft-tracked",
@@ -1399,12 +1399,12 @@ dependencies = [
 [[package]]
 name = "craft-tracked"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 
 [[package]]
 name = "craft-ui"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-cloud-ui",
  "craft-ui-canvas",
@@ -1418,7 +1418,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-canvas"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-behavior",
  "craft-i18n",
@@ -1434,7 +1434,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-contract"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "accesskit",
  "craft-behavior",
@@ -1451,7 +1451,7 @@ dependencies = [
  "craft-theme",
  "craft-tracked",
  "craft-ui-macros",
- "craft-window 0.1.0 (git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8)",
+ "craft-window 0.1.0 (git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339)",
  "egui",
  "epaint_default_fonts",
  "flate2",
@@ -1471,7 +1471,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-macros"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -1482,7 +1482,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-panels"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-behavior",
  "craft-host",
@@ -1500,7 +1500,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-patterns"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-behavior",
  "craft-host",
@@ -1521,7 +1521,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-shell"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-behavior",
  "craft-host",
@@ -1531,7 +1531,7 @@ dependencies = [
  "craft-theme",
  "craft-ui-macros",
  "craft-ui-panels",
- "craft-window 0.1.0 (git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8)",
+ "craft-window 0.1.0 (git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339)",
  "egui",
  "serde",
  "web-time",
@@ -1540,7 +1540,7 @@ dependencies = [
 [[package]]
 name = "craft-ui-widgets"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-behavior",
  "craft-host",
@@ -1584,7 +1584,7 @@ dependencies = [
 [[package]]
 name = "craft-web-api"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "js-sys",
  "serde_json",
@@ -1595,7 +1595,7 @@ dependencies = [
 [[package]]
 name = "craft-web-host"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "wasm-bindgen",
  "web-sys",
@@ -1604,7 +1604,7 @@ dependencies = [
 [[package]]
 name = "craft-win32"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "winsafe",
 ]
@@ -1612,7 +1612,7 @@ dependencies = [
 [[package]]
 name = "craft-window"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-atomic",
  "craft-behavior",
@@ -1653,10 +1653,12 @@ dependencies = [
 [[package]]
 name = "craft-xls"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-cfb",
+ "craft-codepage",
  "craft-sheet",
+ "encoding_rs",
  "md-5",
  "miniz_oxide 0.9.1",
  "sha1 0.10.7",
@@ -1666,7 +1668,7 @@ dependencies = [
 [[package]]
 name = "craft-xlsx"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "craft-drawingml",
  "craft-opc",
@@ -1678,7 +1680,7 @@ dependencies = [
 [[package]]
 name = "craft-xml"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "quick-xml 0.41.0",
  "serde",
@@ -1688,7 +1690,7 @@ dependencies = [
 [[package]]
 name = "craft-zip"
 version = "0.1.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "flate2",
  "thiserror 2.0.21",
@@ -3188,7 +3190,7 @@ checksum = "9f4d0e94ddd48749f06bbe4e5389fb9799a0c45bcaf00495042076ef05e3241a"
 [[package]]
 name = "hayro-jbig2"
 version = "0.3.0"
-source = "git+https://github.com/digital4you/craft-libs?rev=13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8#13c564b3d0d2e5ee3a3f4fb56588ebc03fab09a8"
+source = "git+https://github.com/digital4you/craft-libs?rev=be5b24dcb14384e23c635a3af16654d8ce977339#be5b24dcb14384e23c635a3af16654d8ce977339"
 dependencies = [
  "hayro-ccitt",
 ]

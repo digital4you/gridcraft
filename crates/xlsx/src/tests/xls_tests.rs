@@ -398,10 +398,12 @@ fn refuses_encrypted_old_and_foreign_files() {
     stream.extend(eof());
     let err = read_xls(&compound("Workbook", &stream)).unwrap_err().to_string();
     assert!(err.contains("encryption record is damaged"), "{err}");
-    // A BIFF5 (Excel 5.0/95) workbook keeps its data in a `Book` stream.
+    // A BIFF5 (Excel 5.0/95) workbook keeps its data in a `Book` stream, read like a Workbook
+    // stream: this one holds the damaged encryption record above.
     let book = compound("Book", &stream);
     assert_eq!(sniff(&book), Format::Xls);
-    assert!(read_xls(&book).unwrap_err().to_string().contains("BIFF5"));
+    let err = read_xls(&book).unwrap_err().to_string();
+    assert!(err.contains("encryption record is damaged"), "{err}");
     // Another compound file (a word processor document): not a workbook.
     let doc = compound("WordDocument", &[0u8; 100]);
     assert_eq!(sniff(&doc), Format::LegacyBinary);

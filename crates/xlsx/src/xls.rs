@@ -50,7 +50,6 @@ pub fn read_xls_with(bytes: &[u8], functions: FunctionInfo) -> Result<(Workbook,
 fn error(e: x::Error) -> IoError {
     match e {
         x::Error::Encrypted => invalid(ENCRYPTED),
-        x::Error::Biff5 => invalid("Excel 5.0/95 workbooks (BIFF5) are not supported; save the file as .xlsx in Excel and try again."),
         x::Error::TooLarge(why) => IoError::TooLarge(format!("XLS: {why}")),
         x::Error::Invalid(why) => invalid(why),
         e => invalid(e.to_string()),
