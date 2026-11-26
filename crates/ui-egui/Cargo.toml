@@ -11,7 +11,7 @@ workspace = true
 [dependencies]
 # The shared capture slot (`craft_ui::capture`) comes from the one craft-libs revision every
 # craft-libs dependency uses (see the root Cargo.toml).
-craft-ui = { git = "https://github.com/digital4you/craft-libs", rev = "f739b1af69b57e1115cb5dc9dfd18f1f15c2c6eb" }
+craft-ui = { git = "https://github.com/digital4you/craft-libs", rev = "e1be3f76f8116b9af621a6dc75742e2d630754fd" }
 gridcraft-engine = { workspace = true }
 gridcraft-chart = { workspace = true }
 # `monochrome_emoji_fonts` restores the Noto Emoji and emoji-icon faces that 0.37 moved behind
