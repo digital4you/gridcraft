@@ -566,8 +566,10 @@ fn apply_craft_print(print: &craft_xlsx::Print, fit_to_page: bool, sheet: &mut S
         if let Some(p) = ps.paper_size.and_then(paper_name) {
             sheet.print.paper = p.to_string();
         }
-        if let Some(s) = ps.scale {
-            sheet.print.scale = s.clamp(10, 400) as u16;
+        // A scale outside 10..=400 (some writers put 0) is not valid: Excel and LibreOffice
+        // print at 100 %.
+        if let Some(s) = ps.scale.filter(|s| (10..=400).contains(s)) {
+            sheet.print.scale = s as u16;
         }
         if fit_to_page {
             let w = ps.fit_to_width.unwrap_or(1).min(32767) as u16;
