@@ -64,6 +64,13 @@ impl<'a> Package<'a> {
         Ok(Package { opc, craft })
     }
 
+    /// The package of `bytes` around a `craft-xlsx` package already opened on them (an XLSB
+    /// whose workbook and shared strings were read through it).
+    pub(crate) fn with_craft(bytes: &'a [u8], craft: craft_xlsx::Package<'a>) -> Result<Package<'a>, IoError> {
+        let opc = craft_opc::LazyPackage::open(bytes, &LIMITS).map_err(error)?;
+        Ok(Package { opc, craft })
+    }
+
     pub(crate) fn craft_mut(&mut self) -> &mut craft_xlsx::Package<'a> {
         &mut self.craft
     }

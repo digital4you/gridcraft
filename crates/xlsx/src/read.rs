@@ -218,23 +218,54 @@ fn read_workbook_styles(cx: &mut Ctx<'_>, wb: &mut Workbook, wb_rels: &[Rel]) ->
     }
     if let Some(r) = find_rel(wb_rels, "styles").cloned() {
         if let Some(x) = cx.optional_xml(&r.target)? {
-            let StylesIn { xfs, dxfs, palette, named, num_fmts } = read_styles(&x, &checkboxes, &wb.theme.minor_font);
-            cx.num_fmts = num_fmts;
-            // Cell format 0 is the Normal cell format: everything on it (font, number format,
-            // fill, borders, alignment, protection) is what a cell without its own format shows
-            // (#1013).
-            if let Some(normal) = xfs.first() {
-                cx.styles = StyleTable::with_default(normal.clone());
-            }
-            cx.xf_map = xfs.into_iter().enumerate().map(|(i, s)| if i == 0 { StyleId::DEFAULT } else { cx.styles.intern(s) }).collect();
-            cx.dxfs = dxfs;
-            cx.palette = palette;
-            wb.cell_styles = named;
+            apply_styles(cx, wb, &x, &checkboxes);
         }
     } else {
         cx.warn("no styles part");
     }
     Ok(())
+}
+
+/// Takes the cell formats, differential formats, palette and named styles of a styles part
+/// (`styles.xml`, or an XLSB `styles.bin` written out as the XML Excel would write for it).
+pub(crate) fn apply_styles(cx: &mut Ctx<'_>, wb: &mut Workbook, x: &El, checkboxes: &[bool]) {
+    let StylesIn { xfs, dxfs, palette, named, num_fmts } = read_styles(x, checkboxes, &wb.theme.minor_font);
+    cx.num_fmts = num_fmts;
+    // Cell format 0 is the Normal cell format: everything on it (font, number format,
+    // fill, borders, alignment, protection) is what a cell without its own format shows
+    // (#1013).
+    if let Some(normal) = xfs.first() {
+        cx.styles = StyleTable::with_default(normal.clone());
+    }
+    cx.xf_map = xfs.into_iter().enumerate().map(|(i, s)| if i == 0 { StyleId::DEFAULT } else { cx.styles.intern(s) }).collect();
+    cx.dxfs = dxfs;
+    cx.palette = palette;
+    wb.cell_styles = named;
+}
+
+/// A fresh reading context for `pkg`.
+pub(crate) fn context<'a>(pkg: Package<'a>, known_function: Option<&'a dyn Fn(&str) -> bool>) -> Ctx<'a> {
+    Ctx {
+        pkg,
+        report: ReadReport::default(),
+        sst: vec![],
+        phonetics: vec![],
+        xf_map: vec![],
+        dxfs: vec![],
+        palette: crate::tables::INDEXED.to_vec(),
+        date_system: DateSystem::D1900,
+        styles: StyleTable::default(),
+        persons: Default::default(),
+        next_id: 1,
+        num_fmts: Default::default(),
+        cell_pictures: vec![],
+        cf_ext_ids: vec![],
+        legacy_formulas: vec![],
+        shared_formula_bytes: 0,
+        known_function,
+        python: Default::default(),
+        cells: 0,
+    }
 }
 
 /// Read the workbook XML selected by the package's root relationships.
@@ -304,27 +335,7 @@ pub fn read_xlsx<'a>(bytes: &'a [u8], opts: crate::ReadOptions<'a>) -> Result<(W
     let functions = opts.functions;
     let known_function = opts.known_function;
     let pkg = Package::open(bytes)?;
-    let mut cx = Ctx {
-        pkg,
-        report: ReadReport::default(),
-        sst: vec![],
-        phonetics: vec![],
-        xf_map: vec![],
-        dxfs: vec![],
-        palette: crate::tables::INDEXED.to_vec(),
-        date_system: DateSystem::D1900,
-        styles: StyleTable::default(),
-        persons: Default::default(),
-        next_id: 1,
-        num_fmts: Default::default(),
-        cell_pictures: vec![],
-        cf_ext_ids: vec![],
-        legacy_formulas: vec![],
-        shared_formula_bytes: 0,
-        known_function,
-        python: Default::default(),
-        cells: 0,
-    };
+    let mut cx = context(pkg, known_function);
     let root_rels = cx.pkg.rels("")?;
     let wb_part = find_rel(&root_rels, "officeDocument").map(|r| r.target.clone()).unwrap_or_else(|| "xl/workbook.xml".into());
     let wb_xml = workbook_xml(&mut cx.pkg, &wb_part)?;

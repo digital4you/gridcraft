@@ -1,13 +1,17 @@
 //! XLSB import, delegated to `craft_xlsx::Package`.
-//! Cell values, formulas, defined names, and merged cells are imported; formatting, charts,
-//! images, macros and other workbook features are not imported.
+//! Cell values, formulas, defined names (with print areas and print titles), merged cells, cell
+//! formats (number formats, fonts, fills, borders, alignment; the binary styles part is read
+//! as the `styles.xml` Excel writes for it), the theme, column widths, row heights, hidden rows
+//! and columns, default sizes and tables are imported through the worksheet reader the XLSX
+//! import uses; charts, images, comments, hyperlinks, sheet views, page setup, macros and other
+//! workbook features are not imported.
 
 use std::collections::BTreeMap;
 use std::fmt::Write as _;
 use std::sync::Arc;
 
-use gridcraft_core::{CellError, CellRef, DateSystem, RangeRef, Value};
-use gridcraft_model::{Cell, DefinedName, Formula, Preserved, PreservedPart, PreservedRel, PreservedXml, Sheet, StyleId, Visibility, Workbook};
+use gridcraft_core::{CellError, CellRef, DateSystem};
+use gridcraft_model::{DefinedName, Preserved, PreservedPart, PreservedRel, PreservedXml, Visibility, Workbook};
 
 use crate::write::{NS_MAIN, NS_REL, XML_DECL};
 use crate::xml::{esc, esc_attr};
@@ -42,16 +46,6 @@ fn map_cell_error(err: craft_xlsx::CellError) -> CellError {
     }
 }
 
-fn map_value(value: craft_xlsx::Value) -> Value {
-    match value {
-        craft_xlsx::Value::Empty => Value::Empty,
-        craft_xlsx::Value::Number(n) => Value::number(n),
-        craft_xlsx::Value::Text(t) => Value::Text(t),
-        craft_xlsx::Value::Bool(b) => Value::Bool(b),
-        craft_xlsx::Value::Error(e) => Value::Error(map_cell_error(e)),
-    }
-}
-
 fn map_visibility(visibility: craft_xlsx::Visibility) -> Visibility {
     match visibility {
         craft_xlsx::Visibility::Visible => Visibility::Visible,
@@ -66,30 +60,6 @@ pub(super) fn import_limits() -> craft_xlsx::Limits {
     if cfg!(target_arch = "wasm32") { craft_xlsx::Limits { binary_text: 64 << 20, ..limits } } else { limits }
 }
 
-fn map_formula(f: &craft_xlsx::CellFormula, at: craft_xlsx::CellRef, report: &mut ReadReport) -> Option<Formula> {
-    let text = crate::fmla::from_file(f.text.trim());
-    if text.is_empty() {
-        return None;
-    }
-    match f.kind {
-        craft_xlsx::FormulaKind::Normal | craft_xlsx::FormulaKind::Shared => Some(Formula::new(&text)),
-        craft_xlsx::FormulaKind::Array => {
-            let pos = CellRef::new(at.row, at.col);
-            let mut fm = Formula::new(&text);
-            fm.array = Some(
-                f.range
-                    .map(|r| RangeRef::new(CellRef::new(r.first.row, r.first.col), CellRef::new(r.last.row, r.last.col)))
-                    .unwrap_or_else(|| RangeRef::cell(pos)),
-            );
-            Some(fm)
-        }
-        craft_xlsx::FormulaKind::DataTable => {
-            report.warn("what-if data tables are not supported; kept their values");
-            None
-        }
-    }
-}
-
 fn import_defined_names(book: &craft_xlsx::Workbook, file_to_model: &[Option<usize>], wb: &mut Workbook) {
     for d in &book.defined_names {
         let scope = match d.local_sheet_id {
@@ -100,7 +70,18 @@ fn import_defined_names(book: &craft_xlsx::Workbook, file_to_model: &[Option<usi
             None => None,
         };
         let lname = d.name.to_ascii_lowercase();
-        if lname == "_xlnm._filterdatabase" || lname.starts_with("_xlchart.") || lname == "_xlnm.print_area" || lname == "_xlnm.print_titles" {
+        if lname == "_xlnm.print_area" || lname == "_xlnm.print_titles" {
+            if let Some(sheet) = scope.and_then(|si| wb.sheet_mut(si)) {
+                let text = d.formula.trim();
+                if lname == "_xlnm.print_area" {
+                    sheet.print.print_area = crate::read::parse_print_area(text);
+                } else {
+                    (sheet.print.title_rows, sheet.print.title_cols) = crate::read::parse_print_titles(text);
+                }
+            }
+            continue;
+        }
+        if lname == "_xlnm._filterdatabase" || lname.starts_with("_xlchart.") {
             continue;
         }
         wb.names.push(DefinedName {
@@ -149,11 +130,35 @@ pub fn read_xlsb(bytes: &[u8]) -> Result<(Workbook, ReadReport), IoError> {
     let ct = craft_opc::ContentTypes::parse(&ct_bytes);
     let book = package.workbook().map_err(map_error)?;
     let strings = package.shared_strings().map_err(map_error)?;
+    let styles = package.styles().map_err(map_error)?;
     let mut wb = Workbook::new();
     wb.sheets.clear();
     wb.date_system = if book.date_1904 { DateSystem::D1904 } else { DateSystem::D1900 };
     let mut report = ReadReport::default();
-    report.warn("XLSB import: formatting, charts, images, macros and other features are not imported; dates, currency and percentages may display as numbers. Save a new .xlsx file; XLSB saving is not supported.");
+    // The worksheets are read as the XLSX import reads them: rows and cells through
+    // `craft_xlsx`, with the workbook's cell formats and shared strings.
+    let mut cx = crate::read::context(crate::package::Package::with_craft(bytes, package)?, None);
+    cx.date_system = wb.date_system;
+    cx.sst = strings.into_iter().map(|s| s.text).collect();
+    let book_rels = cx.pkg.rels(&book_part)?;
+    if let Some(r) = crate::read::find_rel(&book_rels, "theme").cloned()
+        && let Some(x) = cx.optional_xml(&r.target)?
+    {
+        wb.theme = crate::theme::read_theme(&x);
+    }
+    let formats = match styles.map(|st| crate::xml::parse(&st.to_xml())) {
+        Some(Ok(x)) => {
+            crate::read::apply_styles(&mut cx, &mut wb, &x, &[]);
+            true
+        }
+        _ => false,
+    };
+    let unread = "charts, images, comments, hyperlinks, page setup, macros and other features are not imported. Save a new .xlsx file; XLSB saving is not supported.";
+    report.warn(if formats {
+        format!("XLSB import: {unread}")
+    } else {
+        format!("XLSB import: the workbook has no readable cell formats, so dates, currency and percentages may display as numbers; {unread}")
+    });
     let mut file_to_model = Vec::with_capacity(book.sheets.len());
     for entry in &book.sheets {
         if entry.kind != craft_xlsx::SheetKind::Worksheet {
@@ -165,34 +170,27 @@ pub fn read_xlsb(bytes: &[u8]) -> Result<(Workbook, ReadReport), IoError> {
             continue;
         }
         wb.check_sheet_name(&entry.name, None).map_err(|e| IoError::Format(format!("XLSB: {e}")))?;
-        if let Some(ref part_name) = entry.part
-            && ct.of(part_name) != Some("application/vnd.ms-excel.worksheet")
-        {
+        let Some(part_name) = entry.part.as_deref() else {
+            return Err(IoError::Format(format!("XLSB: sheet \"{}\" has no part", entry.name)));
+        };
+        if ct.of(part_name) != Some("application/vnd.ms-excel.worksheet") {
             return Err(IoError::Format("XLSB: wrong worksheet content type".into()));
         }
-        let mut sheet = Sheet::new(&entry.name);
+        cx.legacy_formulas.clear();
+        // A worksheet record that does not parse fails the import, as before: nothing is dropped
+        // silently.
+        let (mut sheet, _) = crate::sheet_read::read_sheet(&mut cx, part_name, &entry.name)?;
         sheet.visibility = map_visibility(entry.visibility);
-        let part = package
-            .sheet(entry, |row| {
-                for cell in row.cells {
-                    let value = map_value(cell.value.resolve(&strings, book.date_1904));
-                    let formula = cell.formula.as_ref().and_then(|f| map_formula(f, cell.at, &mut report));
-                    if !value.is_empty() || formula.is_some() {
-                        sheet.cells.set(
-                            CellRef::new(cell.at.row, cell.at.col),
-                            Cell { value, formula: formula.map(Arc::new), style: StyleId::DEFAULT, py: None },
-                        );
-                    }
-                }
-                Ok(())
-            })
-            .map_err(map_error)?;
-        sheet.merges =
-            part.merges.into_iter().map(|r| RangeRef::new(CellRef::new(r.first.row, r.first.col), CellRef::new(r.last.row, r.last.col))).collect();
+        sheet.file_id = entry.sheet_id;
         file_to_model.push(Some(wb.sheets.len()));
         wb.sheets.push(Arc::new(sheet));
     }
+    for w in std::mem::take(&mut cx.report.warnings) {
+        report.warn(w);
+    }
+    wb.styles = std::mem::take(&mut cx.styles);
     import_defined_names(&book, &file_to_model, &mut wb);
+    let package = cx.pkg.craft_mut();
     let external_links = package.external_links(&book).map_err(map_error)?;
     let (preserved, ordinal_map) = preserve_external_links(&external_links, &mut report);
     if let Some(preserved) = preserved {
