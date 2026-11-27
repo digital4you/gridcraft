@@ -18,8 +18,8 @@ gridcraft-engine = { workspace = true }
 gridcraft-ui-egui = { workspace = true }
 # The host messages (storytold/craft-libs): one contract and one bridge for the web builds.
 # The page command API (storytold/craft-libs#413): window.gridcraft over the control channel.
-craft-web-api = { git = "https://github.com/digital4you/craft-libs", rev = "afc3bdbb80be20e690e3d9561e64253ff5a0467a", version = "0.1.0" }
-craft-web-host = { git = "https://github.com/digital4you/craft-libs", rev = "afc3bdbb80be20e690e3d9561e64253ff5a0467a", version = "0.1.0" }
+craft-web-api = { git = "https://github.com/digital4you/craft-libs", rev = "c17239e518a38f6eb7a0a0801e636e39ee85de2a", version = "0.1.0" }
+craft-web-host = { git = "https://github.com/digital4you/craft-libs", rev = "c17239e518a38f6eb7a0a0801e636e39ee85de2a", version = "0.1.0" }
 egui = { workspace = true }
 log = { workspace = true }
 serde_json = { workspace = true }
